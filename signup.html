@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up - Sanzoora</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signin.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Playfair+Display:700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="signin-bg">
+        <div class="signin-box">
+            <h1 class="signin-title"><span class="deal-highlight">Sign</span> Up</h1>
+            <form class="signin-form" id="signupForm">
+                <!-- Step 1 -->
+                <div class="form-step active">
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="tel" placeholder="Phone Number" required>
+                    <button type="button" class="signin-btn next-btn">Next</button>
+                </div>
+                <!-- Step 2 -->
+                <div class="form-step">
+                    <input type="text" placeholder="Address" required>
+                    <input type="text" placeholder="City" required>
+                    <input type="text" placeholder="State" required>
+                    <div style="display:flex;gap:10px;justify-content:center;">
+                        <button type="button" class="signin-btn prev-btn">Previous</button>
+                        <button type="button" class="signin-btn next-btn">Next</button>
+                    </div>
+                </div>
+                <!-- Step 3 -->
+                <div class="form-step">
+                    <input type="text" placeholder="Pincode" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <div style="display:flex;gap:10px;justify-content:center;">
+                        <button type="button" class="signin-btn prev-btn">Previous</button>
+                        <button type="submit" class="signin-btn">Sign Up</button>
+                    </div>
+                </div>
+            </form>
+            <p class="signup-link">Already have an account? <a href="signin.html">Sign In</a></p>
+        </div>
+    </div>
+    <script>
+        // Multi-step form logic
+        const steps = document.querySelectorAll('.form-step');
+        const nextBtns = document.querySelectorAll('.next-btn');
+        const prevBtns = document.querySelectorAll('.prev-btn');
+        let currentStep = 0;
+
+        function showStep(step) {
+            steps.forEach((el, idx) => {
+                el.classList.toggle('active', idx === step);
+            });
+        }
+
+        nextBtns.forEach(btn => {
+            btn.onclick = function() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    showStep(currentStep);
+                }
+            }
+        });
+
+        prevBtns.forEach(btn => {
+            btn.onclick = function() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                }
+            }
+        });
+
+        // Optional: Prevent form submit for demo
+        document.getElementById('signupForm').onsubmit = function(e) {
+            // e.preventDefault(); // Uncomment to prevent actual submit
+        };
+    </script>
+</body>
+</html>
