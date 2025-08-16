@@ -1,0 +1,101 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signin-bg {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(rgba(106,90,249,0.4), rgba(255,106,136,0.4)),
+        url('signin\ background.jpg') center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.signin-box {
+    background: rgba(0,0,0,0.35);
+    padding: 40px 30px 30px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    text-align: center;
+    min-width: 320px;
+    max-width: 90vw;
+}
+
+.signin-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.deal-highlight {
+    background: linear-gradient(90deg, #ff6a88 0%, #ffb86c 40%, #6a5af9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.signin-form input {
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    background: rgba(255,255,255,0.85);
+    margin-bottom: 8px;
+    outline: none;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.signin-btn {
+    padding: 12px 0;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(106,90,249,0.10);
+    margin-top: 8px;
+    letter-spacing: 1px;
+}
+.signin-btn:hover {
+    background: linear-gradient(90deg, #6a5af9 0%, #ff6a88 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+.signup-link {
+    color: #fff;
+    margin-top: 18px;
+    font-size: 1rem;
+}
+.signup-link a {
+    color: #ffb86c;
+    text-decoration: underline;
+}
+.form-step {
+    display: none;
+    flex-direction: column;
+    gap: 18px;
+}
+.form-step.active {
+    display: flex;
+}
+.next-btn, .prev-btn {
+    width: 48%;
+    margin-top: 8px;
+}
