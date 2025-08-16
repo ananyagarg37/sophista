@@ -1,0 +1,209 @@
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    width: 100vw;
+    margin: 0;
+    padding: 0 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-left: 40px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+}
+
+
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 16px;
+    display: block;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    min-width: 150px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    border-radius: 0 0 8px 8px;
+    z-index: 10;
+}
+
+.dropdown-menu li a {
+    padding: 10px 16px;
+    border-radius: 0;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 32px;
+    margin-left: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.15);
+    transition: background 0.2s;
+    text-decoration: none;
+}
+
+.profile-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+/* ...rest of your CSS remains unchanged... */
+
+.hero-section {
+    width: 100vw;
+    height: 90vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(106,90,249,0.4), rgba(255,106,136,0.4)),
+        url('men\ front\ image.png')center center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.hero-content {
+    text-align: center;
+    color: #fff;
+    background: rgba(0,0,0,0.35);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+/* Add at the end of your index.css */
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+/* .deal-highlight {
+    font-size: 3.5rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, #ff6a88 0%, #ffb86c 40%, #6a5af9 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+} */
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+
+.shop-btn {
+    font-size: 1.2rem;
+    padding: 14px 40px;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(106,90,249,0.15);
+}
+
+.shop-btn:hover {
+    background: linear-gradient(90deg, #6a5af9 0%, #ff6a88 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    text-align: left;
+    color: #fff;
+    background: rgba(0,0,0,0.35);
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+    max-width: 800px;
+    margin: auto;
+}
+
+.deal-img {
+    width: 160px;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    flex-shrink: 0;
+    background: #fff;
+}
+
+.deal-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
