@@ -1,0 +1,101 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+    background: 
+        linear-gradient(rgba(106,90,249,0.3), rgba(255,106,136,0.3)),
+        url('https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=1500&q=80') center center/cover no-repeat;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px 70px; /* 60px vertical, 48px horizontal */
+    max-width: 950px;
+    margin: 60px auto;
+    padding: 24px 10px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(106,90,249,0.10);
+}
+.category-box {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    min-height: 320px;
+    box-shadow: 0 4px 24px rgba(106,90,249,0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background: #fff;
+}
+
+.category-box:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(106,90,249,0.18);
+}
+
+.category-box img {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+}
+.category-box:hover img {
+    opacity: 1;
+}
+
+.category-info {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(0,0,0,0.7) 80%, rgba(0,0,0,0.1) 100%);
+    color: #fff;
+    padding: 32px 20px 24px 20px;
+    border-radius: 0 0 20px 20px;
+    text-align: center;
+}
+
+.category-info h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin: 0 0 10px 0;
+    letter-spacing: 1px;
+}
+
+.category-info p {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+}
+
+.category-btn {
+    display: inline-block;
+    padding: 12px 36px;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(106,90,249,0.10);
+    letter-spacing: 1px;
+}
+.category-btn:hover {
+    background: linear-gradient(90deg, #6a5af9 0%, #ff6a88 100%);
+    transform: translateY(-2px) scale(1.04);
+}
+
+@media (max-width: 900px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+        max-width: 98vw;
+        gap: 28px;
+        padding: 24px 4vw;
+    }
+}
