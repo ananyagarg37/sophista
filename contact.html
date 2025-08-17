@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Sanzoora</title>
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: #fdfdfd;
+      color: #222;
+      overflow-x: hidden;
+    }
+
+    /* Navbar */
+   .navbar {
+    width: 100vw;
+    margin: 0;
+    padding: 0 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    left: 0;
+    top: 0;
+}
+
+/* Logo */
+.logo {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-left: 40px;
+    color: #fff;
+}
+
+/* Nav Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+}
+
+.nav-links li {
+    position: relative;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 16px;
+    display: block;
+    font-weight: 500;
+    transition: background 0.2s, color 0.2s;
+    border-radius: 4px;
+}
+
+.nav-links a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    border-radius: 0 0 8px 8px;
+    z-index: 10;
+    padding: 5px 0;
+}
+
+.dropdown-menu li a {
+    padding: 10px 16px;
+    color: #fff; /* keep links white */
+    border-radius: 0;
+    transition: background 0.2s;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(255, 255, 255, 0.25); /* lighter hover */
+    color: #fff;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Profile Button */
+/* Profile Button */
+.profile-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    margin-left: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s, transform 0.2s;
+    text-decoration: none;
+    overflow: hidden; /* ensures image stays inside circle */
+}
+
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.05); /* slight zoom effect */
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+
+/* Responsive Navbar */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none; /* hide links for mobile (hamburger can be added later) */
+  }
+}
+
+    /* Contact Section */
+    .contact-section {
+  padding: 60px 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  min-height: 100vh; /* full page height, no extra gap */
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  max-width: 1100px; /* keeps nice readable size */
+  margin: auto;
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+
+    .contact-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .contact-form {
+      padding: 40px;
+    }
+
+    .contact-form h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #000;
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-form label {
+      margin-top: 15px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      margin-top: 8px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .contact-form .btn {
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .contact-form .btn:hover {
+      background: #444;
+    }
+
+    /* Right Info */
+    .contact-info {
+      margin-top: 30px;
+    }
+
+    .contact-info p {
+      margin: 8px 0;
+      font-size: 15px;
+    }
+
+    .social-icons {
+      margin-top: 20px;
+    }
+
+    .social-icons a img {
+      width: 28px;
+      margin-right: 12px;
+      transition: transform 0.3s;
+    }
+
+    .social-icons a img:hover {
+      transform: scale(1.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .contact-container {
+        grid-template-columns: 1fr;
+      }
+      .contact-image {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+     <header class="navbar">
+        <div class="logo">Sophista</div>
+        <nav>
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <a href="home.html">Home</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Mens</a></li>
+                        <li><a href="#">Kids</a></li>
+                        <li><a href="#">Womens</a></li>
+                        <li><a href="#">GenZ</a></li>
+                        <li><a href="#">Home Decor</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Team</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Category </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Bottom Wear </a></li>
+                        <li><a href="#">Top</a></li>
+                        <li><a href="#">Shoes</a></li>
+                        <li><a href="#">Accessories</a></li>    
+                        <li><a href="#">One Piece </a></li>
+                        <li><a href="#">Winter Wear</a></li>
+
+                        
+                
+
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#">Contact</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">Phone</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        
+<a href="signup.html" class="profile-btn" title="Profile">
+    <img src="profile logo.webp" alt="Profile" class="profile-img">
+</a>
+    </header>
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+
+      <!-- Left: Image -->
+      <div class="contact-image">
+        <img src="contact page.jpg"  alt="Luxury Fashion">
+       
+      </div>
+
+      <!-- Right: Contact Form + Info -->
+      <div class="contact-form">
+        <h1>Contact Us</h1>
+        <form>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+
+          <label for="email">E-mail</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="Write your message"></textarea>
+
+          <button type="submit" class="btn">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+          <p><strong>Email:</strong> hi@sophista.com</p>
+          <p><strong>Based in:</strong> San Francisco, California</p>
+          <div class="social-icons">
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
