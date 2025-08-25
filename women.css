@@ -207,3 +207,309 @@ body, html {
     flex-direction: column;
     justify-content: center;
 }
+
+.brand-carousel-section {
+    margin: 60px auto 0 auto;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+.brand-carousel-title {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #6a5af9;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+}
+
+.brand-carousel-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+    justify-content: center;
+}
+
+.brand-carousel {
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 16px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.brand-carousel::-webkit-scrollbar { display: none; }
+
+.brand-card {
+    background: linear-gradient(120deg, #ff6a88 0%, #6a5af9 100%);
+    border-radius: 18px;
+    min-width: 160px;
+    max-width: 160px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(106,90,249,0.10);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    position: relative;
+}
+.brand-card:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 8px 32px rgba(106,90,249,0.18);
+}
+
+.brand-card img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    margin-bottom: 14px;
+    background: #fff;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: 0 2px 8px rgba(255,255,255,0.12);
+}
+
+.brand-card span {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(106,90,249,0.18);
+}
+
+.brand-arrow {
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(106,90,249,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.brand-arrow.left { left: -50px; }
+.brand-arrow.right { right: -50px; }
+.brand-arrow:hover {
+    background: linear-gradient(90deg, #6a5af9 0%, #ff6a88 100%);
+}
+@media (max-width: 900px) {
+    .brand-carousel-wrapper { max-width: 98vw; }
+    .brand-arrow.left { left: 0; }
+    .brand-arrow.right { right: 0; }
+}
+@media (max-width: 600px) {
+    .brand-card { min-width: 60vw; max-width: 60vw; }
+}
+
+.topdeal-section {
+    margin: 70px auto 0 auto;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+.topdeal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(255,255,255,0.07);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(106,90,249,0.10);
+    overflow: hidden;
+    min-height: 340px;
+    gap: 0;
+}
+.topdeal-info {
+    flex: 1.1;
+    padding: 48px 36px 48px 40px;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.topdeal-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.3rem;
+    margin-bottom: 18px;
+    color: #6a5af9;
+    letter-spacing: 1px;
+}
+.topdeal-desc {
+    font-size: 1.15rem;
+    color: #333;
+    margin-bottom: 28px;
+    line-height: 1.6;
+}
+.topdeal-info .shop-btn {
+    width: fit-content;
+    padding: 12px 38px;
+    font-size: 1.1rem;
+}
+.topdeal-img {
+    flex: 1;
+    min-width: 320px;
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-end;
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+}
+.topdeal-img img {
+    width: 100%;
+    height: 100%;
+    max-width: 420px;
+    object-fit: cover;
+    display: block;
+    border-radius: 0 24px 24px 0;
+    box-shadow: 0 4px 24px rgba(106,90,249,0.10);
+}
+@media (max-width: 900px) {
+    .topdeal-container {
+        flex-direction: column-reverse;
+        min-height: unset;
+    }
+    .topdeal-img img {
+        max-width: 100%;
+        border-radius: 0 0 24px 24px;
+    }
+    .topdeal-info {
+        padding: 32px 18px 32px 18px;
+        text-align: center;
+    }
+}
+
+.site-footer {
+    background: linear-gradient(90deg, #ff6a88 0%, #6a5af9 100%);
+    color: #fff;
+    padding: 40px 0 0 0;
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 60px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 30px 30px 30px;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-section {
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+
+.footer-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.footer-section a:hover {
+    color: #ffd6e0;
+}
+
+.footer-social {
+    display: flex;
+    gap: 18px;
+    margin-top: 8px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 18px 0 10px 0;
+    font-size: 1rem;
+    background: rgba(0,0,0,0.08);
+    letter-spacing: 1px;
+    margin-top: 10px;
+    border-radius: 0 0 16px 16px;
+}
+
+@media (max-width: 800px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 0 10vw 30px 10vw;
+    }
+    .footer-section {
+        min-width: 0;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1rem;
+    margin-top: 8px;
+}
+.footer-contact div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.footer-icon {
+    font-size: 1.2rem;
+    color: #ffd6e0;
+}
+
+.footer-social {
+    display: flex;
+    gap: 18px;
+    margin-top: 12px;
+    justify-content: flex-start;
+}
+.social-icon img {
+    width: 32px;
+    height: 32px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.2s, filter 0.2s;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    padding: 4px;
+}
+.social-icon.instagram img:hover {
+    filter: drop-shadow(0 0 6px #ff6a88) brightness(1.2);
+    transform: scale(1.1);
+}
+.social-icon.facebook img:hover {
+    filter: drop-shadow(0 0 6px #4267B2) brightness(1.2);
+    transform: scale(1.1);
+}
+.social-icon.twitter img:hover {
+    filter: drop-shadow(0 0 6px #1DA1F2) brightness(1.2);
+    transform: scale(1.1);
+}
