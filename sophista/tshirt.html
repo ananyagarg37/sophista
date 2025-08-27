@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dresses</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #efe2d3; margin: 0; }
+    .marquee { background: #fff; border-bottom: 2px solid #ddd; font-size: 24px; font-weight: bold; color: #333; white-space: nowrap; overflow: hidden; }
+    .marquee span { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
+    @keyframes marquee { 0%{transform:translateX(0);}100%{transform:translateX(-100%);} }
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+    .product { border: 1px solid #ddd; padding: 10px; text-align: center; border-radius: 8px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+    .product img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+    .wishlist { margin-top: 10px; padding: 5px 10px; border: none; background: #ff6a88; color: #fff; border-radius: 5px; cursor: pointer; }
+    .wishlist:hover { background: #e05570; }
+    .top-links { background: #333; padding: 10px; text-align: right; }
+    .top-links a { color: #fff; text-decoration: none; margin: 0 10px; font-weight: bold; }
+    .site-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: #efe2d3; /* beige */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 40;
+}
+
+/* left logo */
+.brand-logo { display: inline-block; }
+.site-logo {
+    height: 52px;
+    width: auto;
+    display: block;
+    border-radius: 6px;
+    object-fit: contain;
+    background: transparent;
+}
+
+/* centered site name */
+.header-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.1rem;
+    color: #2b2b2b;
+    letter-spacing: 1px;
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 45;
+}
+
+/* right-side icons */
+.header-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    z-index: 50;
+}
+
+/* generic icon style */
+.icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 44px;
+    width: 44px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.03);
+    color: #2b2b2b;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* profile image inside icon */
+.icon.profile img {
+    height: 28px;
+    width: 28px;
+    border-radius: 6px;
+    object-fit: cover;
+}
+
+/* slightly stronger hover */
+.icon:hover {
+    background: rgba(0,0,0,0.06);
+    transform: translateY(-2px);
+}
+
+/* responsive adjustments */
+@media (max-width: 760px) {
+    .site-logo { height: 44px; }
+    .header-center { font-size: 1.5rem; position: absolute; left: 50%; transform: translateX(-50%); }
+    .icon { height: 40px; width: 40px; font-size: 16px; }
+}
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+<header class="site-header">
+    <div class="header-left">
+        <a href="index.html" class="brand-logo">
+            <img src="sophista 1 .jpg" alt="Shopista logo" class="site-logo"> <!-- replace with your logo file -->
+        </a>
+    </div>
+
+    <div class="header-center">Sophista</div>
+
+    <div class="header-right">
+        <a href="signup.html" class="icon profile" title="Profile" aria-label="Profile">
+            <img src="profile logo.webp" alt="Profile" />
+        </a>
+        <a href="wishlist.html" class="icon wishlist" title="Wishlist" aria-label="Wishlist">❤</a>
+        <a href="cart.html" class="icon cart" title="Cart" aria-label="Cart">🛒</a>
+    </div>
+</header>
+
+  <!-- Marquee -->
+  <div class="marquee"><span>Stay Lit in Tees🔥 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stay Lit in Tees🔥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stay Lit in Tees🔥 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Stay Lit in Tees🔥  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stay Lit in Tees🔥 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Stay Lit in Tees🔥</span></div>
+
+  <section class="product-grid">
+    <div class="product">
+        <a href="p21.html">
+      <img src="https://i.pinimg.com/1200x/a3/00/ca/a300ca0bdd8438778cde8bea1aee4c79.jpg">
+      </a>
+      <h3>Dress 1</h3>
+      <p>₹1000</p>
+      <button class="wishlist" onclick="addToWishlist('Dress 1','dress1.jpg','₹1000')">♡ Wishlist</button>
+    </div>
+
+    <div class="product">
+        <a href="p22.html">
+      <img src="https://i.pinimg.com/1200x/43/90/ea/4390eaffbce7ddf691f42e74781db6a2.jpg">
+      </a>
+      <h3>Dress 2</h3>
+      <p>₹1200</p>
+      <button class="wishlist" onclick="addToWishlist('Dress 2','dress2.jpg','₹1200')">♡ Wishlist</button>
+    </div>
+     <div class="product">
+        <a href="p23.html">
+      <img src="https://i.pinimg.com/736x/9f/c3/f6/9fc3f6e115dbb72e044e9f1166a55556.jpg">
+        </a>
+      <h3>Dress 2</h3>
+      <p>₹1200</p>
+      <button class="wishlist" onclick="addToWishlist('Dress 2','dress2.jpg','₹1200')">♡ Wishlist</button>
+    </div>
+
+  
+     <div class="product">
+        <a href="p24.html">
+      <img src="https://i.pinimg.com/1200x/c9/b5/11/c9b511ee99e9c4781d106243797a09e1.jpg">
+      </a>
+      <h3>Dress 2</h3>
+      <p>₹1200</p>
+      <button class="wishlist" onclick="addToWishlist('Dress 2','dress2.jpg','₹1200')">♡ Wishlist</button>
+    </div>
+
+     
+     
+
+    
+
+
+
+
+    <!-- Repeat for all 20 dresses -->
+  </section>
+
+  <script>
+    function addToWishlist(name, image, price) {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+      wishlist.push({ name, image, price });
+
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert(name + " added to wishlist!");
+    }
+  </script>
+
+</body>
+</html>

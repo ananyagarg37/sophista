@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8f8f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      background:#efe2d3;
+      color:#985407;
+      padding: 20px;
+      text-align: center;
+      font-size: 26px;
+      font-weight: bold;
+      width: 100%;
+    }
+
+    .cart-container {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #ddd;
+      padding: 20px 0;
+      gap: 20px;
+    }
+
+    .cart-item img {
+      width: 150px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-info h3 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    .item-info p {
+      margin: 6px 0;
+      font-size: 18px;
+      color: #444;
+    }
+
+    .cart-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .cart-actions button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .remove-btn {
+      background: #ff4d4d;
+      color: #fff;
+    }
+
+    .remove-btn:hover {
+      background: #e60000;
+    }
+
+    .quantity {
+      font-size: 18px;
+    }
+
+    .total {
+      text-align: right;
+      margin-top: 30px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .checkout-btn {
+      display: block;
+      margin: 30px auto 0;
+      padding: 15px 25px;
+      font-size: 20px;
+      border: none;
+      background: #6a5af9;
+      color: #fff;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .checkout-btn:hover {
+      background: #5945d6;
+    }
+  </style>
+</head>
+<body>
+  <header>🛒 Your Shopping Cart</header>
+  <div class="cart-container" id="cartContainer">
+    <p>Your cart is empty.</p>
+  </div>
+
+  <script>
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let container = document.getElementById("cartContainer");
+      container.innerHTML = "";
+
+      if (cart.length === 0) {
+        container.innerHTML = "<p style='font-size:20px;text-align:center;'>Your cart is empty.</p>";
+        return;
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {  //item is the current position and index is what to remove..
+        let price = parseFloat(item.price.replace(/[^0-9.]/g, "")) || 0;
+        total += price * item.quantity;
+
+        container.innerHTML += `
+          <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="item-info">
+              <h3>${item.name}</h3>
+              <p>Price: ${item.price}</p>
+              <p>Size: ${item.size || "Not selected"}</p>
+              <p class="quantity">Quantity: ${item.quantity}</p>
+            </div>
+            <div class="cart-actions">
+              <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML += `<div class="total">Total: ₹${total.toFixed(2)}</div>`;
+      container.innerHTML += `<button class="checkout-btn">Proceed to Checkout</button>`;
+    }
+
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1); //Removes 1 item from the cart array at position index.
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    window.onload = loadCart;
+  </script>
+</body>
+</html>
