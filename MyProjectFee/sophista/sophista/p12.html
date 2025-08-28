@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background: #f8f8f8; 
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product-detail { 
+      display: flex; 
+      gap: 50px; 
+      background: #fff; 
+      padding: 50px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+      width: 90%;
+      height: 90%;
+      box-sizing: border-box;
+    }
+
+    /* Image Section */
+    .product-detail img { 
+      width: 45%; 
+      height: 100%; 
+      object-fit: cover; 
+      border-radius: 12px; 
+    }
+
+    /* Info Section */
+    .product-info { 
+      flex: 1; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+    }
+
+    h2 { font-size: 40px; margin: 15px 0; }
+    p { font-size: 20px; color: #444; line-height: 1.6; }
+    .price { font-size: 32px; font-weight: bold; color: #985407; margin: 20px 0; }
+
+    /* Sizes and Quantity */
+    .sizes, .quantity { margin: 20px 0; }
+    label { font-weight: bold; font-size: 18px; margin-right: 15px; }
+    select, input { 
+      padding: 10px; 
+      font-size: 18px; 
+      border-radius: 6px; 
+      border: 1px solid #ccc; 
+    }
+
+    /* Buttons */
+    .buttons {
+      margin-top: 30px;
+    }
+    button { 
+      padding: 15px 30px; 
+      border: none; 
+      background: #985407; 
+      color: #fff; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-size: 18px; 
+      margin-right: 15px; 
+      transition: background 0.3s ease;
+    }
+    button:hover { background: #e05570; }
+  </style>
+</head>
+<body>
+  <div class="product-detail">
+    <!-- Product Image -->
+    <img id="productImage" src="https://i.pinimg.com/736x/29/a8/aa/29a8aa7c5929de10354a0eb98e0f8da0.jpg">
+
+    <!-- Product Info -->
+    <div class="product-info">
+      <h2 id="productName"></h2>
+      <p class="price" id="productPrice"></p>
+      <p id="productDescription">
+        This is a premium outfit made from high-quality fabric. 
+        Designed for comfort and style, suitable for casual wear, parties, and daily use.
+      </p>
+
+      <!-- Sizes -->
+      <div class="sizes">
+        <label for="size">Select Size:</label>
+        <select id="size">
+          <option value="S">S (Small)</option>
+          <option value="M">M (Medium)</option>
+          <option value="L">L (Large)</option>
+          <option value="XL">XL (Extra Large)</option>
+        </select>
+      </div>
+
+      <!-- Quantity -->
+      <div class="quantity">
+        <label for="qty">Quantity:</label>
+        <input type="number" id="qty" value="1" min="1" max="10">
+      </div>
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button onclick="addToCart()">🛒 Add to Cart</button>
+        <button onclick="addToWishlistFromDetail()">♡ Add to Wishlist</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load product details from localStorage
+    const product = JSON.parse(localStorage.getItem("selectedProduct"));
+    if (product) {
+      document.getElementById("productImage").src = "https://i.pinimg.com/736x/29/a8/aa/29a8aa7c5929de10354a0eb98e0f8da0.jpg";
+      document.getElementById("productName").textContent = product.name;
+      document.getElementById("productPrice").textContent = product.price;
+    }
+
+    // Add to Wishlist
+    function addToWishlistFromDetail() {
+      let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+      wishlist.push(product);
+      localStorage.setItem("wishlist", JSON.stringify(wishlist));
+      alert(product.name + " added to wishlist!");
+    }
+
+    // Add to Cart
+    function addToCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let selectedSize = document.getElementById("size").value;
+      let qty = document.getElementById("qty").value;
+
+      let cartItem = {
+        ...product,
+        size: selectedSize,
+        quantity: qty
+      };
+
+      cart.push(cartItem);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(product.name + " (Size: " + selectedSize + ", Qty: " + qty + ") added to cart!");
+    }
+  </script>
+</body>
+</html>
