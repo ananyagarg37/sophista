@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign In - Sophista</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <a href="index.html" class="brand-logo">
+        <img src="logoe.png" alt="Site logo" class="site-logo">
+      </a>
+    </div>
+    <div class="header-center">Sophista</div>
+    <div class="header-right">
+      <a href="signup.html" class="icon profile" title="Profile" aria-label="Profile">
+        <img src="profile logo.webp" alt="Profile" />
+      </a>
+      <a href="wishlist.html" class="icon wishlist" title="Wishlist" aria-label="Wishlist">❤</a>
+      <a href="cart.html" class="icon cart" title="Cart" aria-label="Cart">🛒</a>
+    </div>
+  </header>
+
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-image">
+        <img src="signpic.png" alt="Sign in illustration">
+      </div>
+
+      <div class="contact-form">
+        <h1>Welcome Back</h1>
+        <form id="signinForm">
+          <label for="email">E-mail</label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required>
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+          <div style="display:flex;gap:12px;align-items:center;margin-top:12px;">
+            <button type="submit" class="btn">Sign In</button>
+            <a href="signup.html" class="btn" style="background:#efe2d3;color:#000;padding:10px 18px;text-decoration:none;border-radius:6px;">Create account</a>
+          </div>
+
+          <p id="errorMsg" style="margin-top:14px;font-size:0.95rem;color:red;display:none;"></p>
+
+          <p style="margin-top:14px;font-size:0.95rem;color:#555;">
+            Forgot password? <a href="#">Reset here</a>
+          </p>
+        </form>
+
+        <div class="contact-info" style="margin-top:18px;">
+          <p><strong>Need help?</strong> <a href="contact.html">Contact us</a></p>
+          <div class="social-icons" style="margin-top:8px;">
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook"></a>
+            <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968830.png" alt="Twitter"></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <div class="footer-contact">
+          <div><span class="footer-icon">&#9993;</span><a href="mailto:support@sophista.com">support@sophista.com</a></div>
+          <div><span class="footer-icon">&#128222;</span><a href="tel:+911234567890">+91 12345 67890</a></div>
+          <div><span class="footer-icon">&#127968;</span>123 Fashion Street, Mumbai, India</div>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h3>Follow Us</h3>
+        <div class="footer-social">
+          <a href="#" class="social-icon instagram"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram"></a>
+          <a href="#" class="social-icon facebook"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook"></a>
+          <a href="#" class="social-icon twitter"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter"></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">&copy; 2025 Sophista. All rights reserved.</div>
+  </footer>
+
+ 
+  <script>
+    document.getElementById("signinForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // prevent page reload
+
+      let email = document.getElementById("email").value.trim();
+      let password = document.getElementById("password").value.trim();
+      let errorMsg = document.getElementById("errorMsg");
+
+      // Fetch stored user data from localStorage (from signup form)
+      let storedUser = JSON.parse(localStorage.getItem("user"));
+
+      if (!storedUser) {
+        errorMsg.style.display = "block";
+        errorMsg.textContent = "No account found. Please sign up first.";
+        return;
+      }
+
+      // Validate login
+      if (storedUser.email === email && storedUser.password === password) {
+        errorMsg.style.display = "none";
+        
+        
+        localStorage.setItem("loggedIn", "true");
+
+        alert("Login successful! 🎉 Redirecting to homepage...");
+        window.location.href = "index.html"; // Redirect after login
+      } else {
+        errorMsg.style.display = "block";
+        errorMsg.textContent = "Invalid email or password!";
+      }
+    });
+  </script>
+</body>
+</html>

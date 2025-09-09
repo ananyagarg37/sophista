@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Dresses</title>
+
+  <style>
+
+    body { font-family: Arial, sans-serif; background: #efe2d3; margin: 0; }
+
+
+
+    .marquee { background: #fff; border-bottom: 2px solid #ddd; font-size: 24px; font-weight: bold; color: #333; white-space: nowrap; overflow: hidden; }
+
+    .marquee span { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; }
+
+    @keyframes marquee { 0%{transform:translateX(0);}100%{transform:translateX(-100%);} }
+
+
+
+    .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+
+    .product { border: 1px solid #ddd; padding: 10px; text-align: center; border-radius: 8px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer; }
+
+    .product img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; }
+
+    .wishlist { margin-top: 10px; padding: 5px 10px; border: none; background: #ff6a88; color: #fff; border-radius: 5px; cursor: pointer; }
+
+    .wishlist:hover { background: #e05570; }
+
+
+
+    .site-header {
+
+      position: relative;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      padding: 12px 20px;
+
+      background: #efe2d3; 
+
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+
+      z-index: 40;
+
+    }
+
+
+
+    .brand-logo { display: inline-block; }
+
+    .site-logo {
+
+      height: 52px;
+
+      width: auto;
+
+      display: block;
+
+      border-radius: 6px;
+
+      object-fit: contain;
+
+    }
+
+
+
+    .header-center {
+
+      position: absolute;
+
+      left: 50%;
+
+      transform: translateX(-50%);
+
+      font-family: 'Playfair Display', serif;
+
+      font-size: 2.1rem;
+
+      color: #2b2b2b;
+
+      font-weight: 700;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .header-right { display: flex; gap: 10px; align-items: center; }
+
+
+
+    .icon {
+
+      display: inline-flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      height: 44px;
+
+      width: 44px;
+
+      border-radius: 10px;
+
+      background: rgba(0,0,0,0.03);
+
+      font-size: 18px;
+
+      cursor: pointer;
+
+    }
+
+
+
+    .icon.profile img { height: 28px; width: 28px; border-radius: 6px; object-fit: cover; }
+
+
+
+    .icon:hover { background: rgba(0,0,0,0.06); transform: translateY(-2px); }
+
+
+
+    @media (max-width: 760px) {
+
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .site-logo { height: 44px; }
+
+      .header-center { font-size: 1.5rem; }
+
+    }
+
+
+
+    /* Modal background */
+
+    .modal {
+
+      display: none; 
+
+      position: fixed; 
+
+      z-index: 1000; 
+
+      left: 0; top: 0;
+
+      width: 100%; height: 100%;
+
+      background-color: rgba(0,0,0,0.7);
+
+      justify-content: center;
+
+      align-items: center;
+
+    }
+
+
+
+    /* Product Detail Box inside Modal */
+
+    .product-detail { 
+
+      display: flex; 
+
+      gap: 40px; 
+
+      background: #fff; 
+
+      padding: 30px; 
+
+      border-radius: 12px; 
+
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15); 
+
+      width: 90%;
+
+      height: 90%;
+
+      box-sizing: border-box;
+
+      position: relative;
+
+      animation: fadeIn 0.3s ease-in-out;
+
+    }
+
+
+
+    .product-detail img { 
+
+      width: 45%; 
+
+      height: 100%; 
+
+      object-fit: cover; 
+
+      border-radius: 12px; 
+
+    }
+
+
+
+    .product-info { 
+
+      flex: 1; 
+
+      display: flex; 
+
+      flex-direction: column; 
+
+      justify-content: center; 
+
+    }
+
+
+
+    h2 { font-size: 40px; margin: 15px 0; }
+
+    p { font-size: 18px; color: #444; line-height: 1.6; }
+
+    .price { font-size: 28px; font-weight: bold; color: #985407; margin: 20px 0; }
+
+
+
+    .sizes, .quantity { margin: 15px 0; }
+
+    label { font-weight: bold; font-size: 16px; margin-right: 10px; }
+
+    select, input { 
+
+      padding: 8px; 
+
+      font-size: 16px; 
+
+      border-radius: 6px; 
+
+      border: 1px solid #ccc; 
+
+    }
+
+
+
+    .buttons { margin-top: 20px; }
+
+    button { 
+
+      padding: 12px 24px; 
+
+      border: none; 
+
+      background: #985407; 
+
+      color: #fff; 
+
+      border-radius: 8px; 
+
+      cursor: pointer; 
+
+      font-size: 16px; 
+
+      margin-right: 10px; 
+
+      transition: background 0.3s;
+
+    }
+
+    button:hover { background: #e05570; }
+
+
+
+    .close {
+
+      position: absolute;
+
+      top: 15px;
+
+      right: 20px;
+
+      font-size: 28px;
+
+      font-weight: bold;
+
+      color: #333;
+
+      cursor: pointer;
+
+    }
+
+
+
+    @keyframes fadeIn {
+
+      from { transform: scale(0.8); opacity: 0; }
+
+      to { transform: scale(1); opacity: 1; }
+
+    }
+    /* Toast Notification */
+#toast {
+  visibility: hidden;
+  min-width: 250px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 12px;
+  position: fixed;
+  z-index: 2000;
+  left: 50%;
+  bottom: 30px;
+  font-size: 16px;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease, visibility 0.5s;
+}
+#toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+  </style>
+
+</head>
+
+<body>
+
+
+
+  <!-- Navigation -->
+
+  <header class="site-header">
+
+    <div class="header-left">
+
+        <a href="index.html" class="brand-logo">
+
+            <img src="logoe.png" alt="Shopista logo" class="site-logo">
+
+        </a>
+
+    </div>
+
+    <div class="header-center">Sophista</div>
+
+    <div class="header-right">
+
+        <a href="signup.html" class="icon profile"><img src="profile logo.webp" alt="Profile" /></a>
+
+        <a href="wishlist.html" class="icon wishlist">❤</a>
+
+        <a href="cart.html" class="icon cart">🛒</a>
+
+    </div>
+
+  </header>
+
+
+
+  <!-- Marquee -->
+
+  <div class="marquee"><span>Desi Diva🌸🌺 &nbsp;&nbsp;&nbsp;&nbsp; Desi Diva🌸🌺 &nbsp;&nbsp;&nbsp;&nbsp; Desi Diva🌸🌺</span></div>
+
+
+
+  <!-- Product Grid -->
+
+  <section class="product-grid">
+
+    <div class="product" onclick="openPopup('cord-sharara','https://i.pinimg.com/1200x/eb/20/20/eb2020adb4e157a5a302bee0521b60e8.jpg','₹22,000','A stylish A-line dress perfect for parties.')">
+
+      <img src="https://i.pinimg.com/1200x/eb/20/20/eb2020adb4e157a5a302bee0521b60e8.jpg">
+
+      <h3>cord-sharara</h3>
+
+      <p>₹1000</p>
+
+    </div>
+
+
+
+    <div class="product" onclick="openPopup('Embroidered sharara set','https://i.pinimg.com/736x/e5/93/87/e5938757f6b5f7232d8add95375cf07c.jpg','₹1200')">
+
+      <img src="https://i.pinimg.com/736x/e5/93/87/e5938757f6b5f7232d8add95375cf07c.jpg">
+
+      <h3>Embroidered sharara set</h3>
+
+      <p>₹1200</p>
+
+    </div>
+
+    <div class="product" onclick="openPopup('Multi-color navratri lehenga','https://i.pinimg.com/736x/35/bd/30/35bd30a095c439a19e2bc2375216dd21.jpg','₹1000')">
+
+      <img src="https://i.pinimg.com/736x/35/bd/30/35bd30a095c439a19e2bc2375216dd21.jpg">
+
+      <h3>Multi-color navratri lehenga</h3>
+
+      <p>₹1000</p>
+
+    </div>
+
+
+
+    <div class="product" onclick="openPopup('pink-fashfi suit ','https://i.pinimg.com/736x/5d/8f/bd/5d8fbdec6ecce56bc8f6e4416f7ba7e8.jpg','₹1000')">
+
+      <img src="https://i.pinimg.com/736x/5d/8f/bd/5d8fbdec6ecce56bc8f6e4416f7ba7e8.jpg">
+
+      <h3>pink-fashfi suit </h3>
+
+      <p>₹1000</p>
+
+    </div>
+
+
+
+  </section>
+
+
+
+  <!-- Modal -->
+
+  <div id="productModal" class="modal">
+
+    <div class="product-detail">
+
+      <span class="close" onclick="closePopup()">&times;</span>
+
+      <img id="modalImage" src="">
+
+      <div class="product-info">
+
+        <h2 id="modalName"></h2>
+
+        <p class="price" id="modalPrice"></p>
+
+        <p id="modalDescription">This is a premium outfit made from high-quality fabric. Designed for comfort and style, suitable for casual wear, parties, and daily use.</p>
+
+
+
+        <div class="sizes">
+
+          <label for="size">Select Size:</label>
+
+          <select id="size">
+
+            <option value="S">S (Small)</option>
+
+            <option value="M">M (Medium)</option>
+
+            <option value="L">L (Large)</option>
+
+            <option value="XL">XL (Extra Large)</option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="quantity">
+
+          <label for="qty">Quantity:</label>
+
+          <input type="number" id="qty" value="1" min="1" max="10">
+
+        </div>
+
+
+
+        <div class="buttons">
+
+          <button onclick="addToCart()">🛒 Add to Cart</button>
+
+          <button onclick="addToWishlistFromDetail()">♡ Add to Wishlist</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+  <script>
+
+    let currentProduct = null;
+
+
+
+    function openPopup(name, image, price) {
+
+      currentProduct = { name, image, price };
+
+      document.getElementById("modalName").innerText = name;
+
+      document.getElementById("modalImage").src = image;
+
+      document.getElementById("modalPrice").innerText = price;
+
+      document.getElementById("productModal").style.display = "flex";
+
+    }
+
+
+
+    function closePopup() {
+
+      document.getElementById("productModal").style.display = "none";
+
+    }
+
+
+function addToWishlistFromDetail() {
+  if (!currentProduct) return;
+
+  let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+  // check if this product already exists in wishlist (by name)
+  let exists = wishlist.some(item => item.name === currentProduct.name);
+
+  if (exists) {
+    showToast(currentProduct.name + " is already in wishlist!");
+  } else {
+    wishlist.push(currentProduct);
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    showToast(currentProduct.name + " added to wishlist!");
+  }
+}
+
+
+function addToCart() {
+  if (!currentProduct) return;
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+  let selectedSize = document.getElementById("size").value;
+  let qty = document.getElementById("qty").value;
+
+  let cartItem = {
+    ...currentProduct,
+    size: selectedSize,
+    quantity: qty
+  };
+
+  cart.push(cartItem);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  showToast(currentProduct.name + " (Size: " + selectedSize + ", Qty: " + qty + ") added to cart!");
+}
+
+
+
+
+    // Close modal on outside click
+
+    window.onclick = function(event) {
+
+      let modal = document.getElementById("productModal");
+
+      if (event.target === modal) {
+
+        closePopup();
+
+      }
+
+    }
+function showToast(message) {
+  let toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.className = "show";
+  setTimeout(() => {
+    toast.className = toast.className.replace("show", "");
+  }, 2000); // hides after 2 seconds
+}
+
+  </script>
+
+<div id="toast"></div>
+
+
+</body>
+
+</html>
